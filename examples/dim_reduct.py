@@ -11,7 +11,7 @@ from sklearn.decomposition import PCA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-
+from sklearn.manifold import TSNE
 
 def make_circle(r, num_samples):
   t = np.linspace(0, 2*np.pi, num_samples)
@@ -87,10 +87,13 @@ def main(args):
   nca.train(X, y, batch_size=None, weight_decay=20)
   X_nca = nca(X).detach().cpu().numpy()
 
+  # fit t-SNE with default values
+  X_tsne = TSNE(n_components=2).fit_transform(X)
+
   # plot PCA vs NCA
   y = y.detach().cpu().numpy()
   X = X.detach().cpu().numpy()
-  plot([X, X_nca, X_pca, X_lda], y, ["original", "torchnca", "pca", "lda"])
+  plot([X,X_nca, X_pca, X_lda,X_tsne], y, ["original", "torchnca", "pca", "lda","t-SNE"])
 
   A = nca.A.detach().cpu().numpy()
   print("\nSolution: \n", A)
