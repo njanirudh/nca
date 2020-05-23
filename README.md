@@ -32,7 +32,7 @@ X_nca = nca(X)
 
 ## Dimensionality Reduction
 
-We generate a 3-D dataset where the first 2 dimensions are concentric rings and the third dimension is Gaussian noise. We plot the result of PCA, LDA and NCA with 2 components.
+We generate a 3-D dataset where the first 2 dimensions are concentric rings and the third dimension is Gaussian noise. We plot the result of PCA, LDA, t-SNE and NCA with 2 components.
 
 <p align="center">
  <img src="assets/res.png" width="100%">
